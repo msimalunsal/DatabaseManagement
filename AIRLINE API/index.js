@@ -8,18 +8,32 @@ app.use(express.json()); // req body
 
 //Get All Postgres
 
-app.get("/allPostgres" , async(req,res) => {
+app.get("/customer" , async(req,res) => {
     try {
-        const allPostgres = await pool.query("SELECT * FROM AIRPORT");
+        const allPostgres = await pool.query("SELECT * FROM CUSTOMER");
 
         res.json(allPostgres.rows);
     } catch (error) {
         console.error(error.message);
     }
-    
+
 });
 
 //Get A Postgres
+
+app.get("/customer/:id" , async (req,res) => {
+    const {id} = req.params.id;
+    try {
+        const customer = await pool.query("SELECT * FROM CUSTOMER WHERE pass_no = $1",
+        [id]
+        );
+        
+        res.json(customer.fields);
+    } catch (error) {
+        console.error(error.message);
+        
+    }
+});
 
 
 
