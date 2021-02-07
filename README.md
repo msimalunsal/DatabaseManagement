@@ -1,2 +1,2 @@
 # DatabaseManagement
-A basic REST API with Node.js, Express.jsand PostgreSQL
+A basic REST API with React, Node.js, Express.js and PostgreSQL
