@@ -1,27 +1,33 @@
 const express = require ("express");
 const app = express();
-const pool = require("./db");
+const pool = require("./server/db");
+const cors = require("cors");
 
 app.use(express.json()); // req body
-
+app.use(cors());
 //Routes
 
-//Get All Postgres
+//Get All Customers
 
-app.get("/customer" , async(req,res) => {
+app.get("/api/v1/customers" , async(req,res) => {
     try {
-        const allPostgres = await pool.query("SELECT * FROM CUSTOMER");
-
-        res.json(allPostgres.rows);
+        const allCustomers = await pool.query("SELECT * FROM CUSTOMER");
+        res.status(200).json({
+            status : "success",
+            allCustomers : allCustomers.rows.length,
+            data :{
+                customers : allCustomers.rows,
+            },
+        });
     } catch (error) {
         console.error(error.message);
     }
 
 });
 
-//Get A Postgres
+//Get A Customer
 
-app.get("/customer/:id" , async (req,res) => {
+/*app.get("/api/v1/customers/:id/" , async (req,res) => {
     const {id} = req.params.id;
     try {
         const customer = await pool.query("SELECT * FROM CUSTOMER WHERE pass_no = $1",
@@ -33,12 +39,11 @@ app.get("/customer/:id" , async (req,res) => {
         console.error(error.message);
         
     }
-});
+});*/
 
 
 
 //Create A Postgres
-
 app.post("/airline" , async(req,res) => {
     try {
         console.log(req.body);
