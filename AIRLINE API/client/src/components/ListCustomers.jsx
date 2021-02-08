@@ -8,7 +8,8 @@ const ListCustomers = (props) => {
     useEffect(() => {
         const fetchData = async() =>{
             try {
-                const response =await CustomerFinder.get("/");
+                const response =await CustomerFinder.get("");
+                console.log(response.data);
                 setCustomers(response.data.data.customers)
             } catch (error) {
                 

@@ -12,6 +12,7 @@ app.use(cors());
 app.get("/api/v1/customers" , async(req,res) => {
     try {
         const allCustomers = await pool.query("SELECT * FROM CUSTOMER");
+        console.log("sa");
         res.status(200).json({
             status : "success",
             allCustomers : allCustomers.rows.length,
