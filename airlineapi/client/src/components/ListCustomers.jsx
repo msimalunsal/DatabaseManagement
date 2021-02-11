@@ -2,13 +2,14 @@ import React , {useEffect} from "react";
 import CustomerFinder from "../apis/CustomeFinder";
 import { CustomerContext } from "../context/CustomerContext";
 import { useContext } from 'react';
+import '../style/list.css'
 
 const ListCustomers = (props) => {
     const {customers, setCustomers}= useContext(CustomerContext)
     useEffect(() => {
         const fetchData = async() =>{
             try {
-                const response =await CustomerFinder.get("");
+                const response =await CustomerFinder.get("/customers");
                 console.log(response.data);
                 setCustomers(response.data.data.customers)
             } catch (error) {
@@ -19,18 +20,20 @@ const ListCustomers = (props) => {
        
     },[]);
     return (
-        <div className="list-group">
-            <table className="table-primary">
+        
+        <div class="table-wrapper">
+            <h2>All Customers</h2>
+            <table class="fl-table">
                 <thead>
-                    <tr className="bg-primary">
-                        <th scope="col">Passaport No</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Adress</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Customer Name</th>
-                        <th scope="col">Customer Phone</th>
-
+                    <tr>
+                        <th>Passaport No</th>
+                        <th>Country</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Customer Name</th>
+                        <th>Customer Phone</th>
                     </tr>
+                      
                 </thead>
                 <tbody>
                     {customers && customers.map(customer => {
@@ -38,7 +41,7 @@ const ListCustomers = (props) => {
                             <tr key={customer.pass_no}>
                                 <td>{customer.pass_no}</td>
                                 <td>{customer.country}</td>
-                                <td>{customer.adress}</td>
+                                <td>{customer.address}</td>
                                 <td>{customer.email}</td>
                                 <td>{customer.customer_name}</td>
                                 <td>{customer.cphone}</td>
