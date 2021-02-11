@@ -27,7 +27,7 @@ app.get("/api/v1/customers" , async(req,res) => {
 
 app.get("/api/v1/ffc/bronze" , async(req,res) => {
     try {
-        const bronzeCustomers = await pool.query("SELECT * FROM FFC WHERE total_millage <= 15650");
+        const bronzeCustomers = await pool.query("SELECT * FROM FFC WHERE total_millage <= 15000");
         res.status(200).json({
             status : "success",
             bronzeCustomers : bronzeCustomers.rows.length,
@@ -43,7 +43,7 @@ app.get("/api/v1/ffc/bronze" , async(req,res) => {
 
 app.get("/api/v1/ffc/silver" , async(req,res) => {
     try {
-        const silverCustomers = await pool.query("SELECT * FROM FFC WHERE 15650 < total_millage  AND total_millage < 17000");
+        const silverCustomers = await pool.query("SELECT * FROM FFC WHERE 15000 < total_millage  AND total_millage < 20000");
         res.status(200).json({
             status : "success",
             silverCustomers : silverCustomers.rows.length,
@@ -59,7 +59,7 @@ app.get("/api/v1/ffc/silver" , async(req,res) => {
 
 app.get("/api/v1/ffc/gold" , async(req,res) => {
     try {
-        const goldCustomers = await pool.query("SELECT * FROM FFC WHERE  total_millage >= 17000");
+        const goldCustomers = await pool.query("SELECT * FROM FFC WHERE  total_millage >= 20000");
         res.status(200).json({
             status : "success",
             goldCustomers : goldCustomers.rows.length,
@@ -74,20 +74,23 @@ app.get("/api/v1/ffc/gold" , async(req,res) => {
 });
 
 //Get A Customer
-
-/*app.get("/api/v1/customers/:id/" , async (req,res) => {
-    const {id} = req.params.id;
+app.get("/api/v1/ffc/customers/:id/" , async (req,res) => {
     try {
-        const customer = await pool.query("SELECT * FROM CUSTOMER WHERE pass_no = $1",
-        [id]
-        );
-        
-        res.json(customer.fields);
+        const results = await pool.query("SELECT * FROM CUSTOMER WHERE pass_no = $1", [
+            req.params.id,
+        ]);
+        res.status(200).json({
+            status : "success",
+            data :{
+                customers : results.rows[0],
+            },
+        });
     } catch (error) {
         console.error(error.message);
-        
     }
-});*/
+
+});
+
 
 
 

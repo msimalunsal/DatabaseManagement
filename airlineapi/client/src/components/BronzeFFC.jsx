@@ -16,7 +16,7 @@ const BronzeFFC = () => {
                     <h3>
                         <a href="ffc/bronze" target="_blank">See Bronze Customers</a>
                     </h3>
-                    <p>Our bronze customers have traveled a maximum of 15650 miles.</p>
+                    <p>Our bronze customers have traveled a maximum of 15000 miles.</p>
                 </div>
             </div>
          
@@ -34,7 +34,7 @@ const BronzeFFC = () => {
                     <h3>
                         <a href="ffc/silver" target="_blank">See Silver Customers</a>
                     </h3>
-                    <p>Our silver customers have traveled a minimum of 1650 and a maximum of 1700 miles.</p>
+                    <p>Our silver customers have traveled a minimum of 15000 and a maximum of 20000 miles.</p>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@ const BronzeFFC = () => {
                     <h3>
                         <a href="ffc/gold" target="_blank">See Gold Customers</a>
                     </h3>
-                    <p>Our gold customers have traveled a minimum of 1700 miles.</p>
+                    <p>Our gold customers have traveled a minimum of 20000 miles.</p>
                 </div>
             </div>
         </div>

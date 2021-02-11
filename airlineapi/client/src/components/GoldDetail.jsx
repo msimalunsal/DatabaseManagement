@@ -3,6 +3,7 @@ import CustomerFinder from "../apis/CustomeFinder";
 import { useContext } from 'react';
 import { CustomerContext } from "../context/CustomerContext";
 import '../style/list.css';
+import {Link} from "react-router-dom";
 const ListGold = (props) => {
     const {customers, setCustomers}= useContext(CustomerContext)
     useEffect(() => {
@@ -37,7 +38,7 @@ const ListGold = (props) => {
                                 <td>{customers.freq_cust_no}</td>
                                 <td>{customers.cust_pass_no}</td>
                                 <td>{customers.total_millage}</td>
-                               
+                                <td><Link to={`customers/${customers.cust_pass_no}`}>GO</Link></td>
                             </tr>
                         )
                     })}
