@@ -7,13 +7,13 @@ import { useParams } from "react-router-dom";
 
 const ListCustomers = (props) => {
     const {id} =useParams();
-    const {customers, setCustomers}= useContext(CustomerContext)
+    const {selectedCustomer, setSelectedCustomer}= useContext(CustomerContext)
     useEffect(() => {
         const fetchData = async() =>{
             try {
-                const response =await CustomerFinder.get(`ffc/customers/${id}`);
-                setCustomers(response.data.data.customers)
-                console.log(response.data.customers);
+                const response =await CustomerFinder.get(`/ffc/customers/${id}`);
+                setSelectedCustomer(response.data.data.customers)
+                console.log(id);
             } catch (error) {
                 
             }
@@ -34,23 +34,21 @@ const ListCustomers = (props) => {
                         <th>Email</th>
                         <th>Customer Name</th>
                         <th>Customer Phone</th>
+                        <th>Total Mileage</th>
                     </tr>
                       
                 </thead>
                 <tbody>
-                    {customers && customers.map(customer => {
-                        return(
-                            <tr>
-                                <td>{customer.pass_no}</td>
-                                <td>{customer.country}</td>
-                                <td>{customer.address}</td>
-                                <td>{customer.email}</td>
-                                <td>{customer.customer_name}</td>
-                                <td>{customer.cphone}</td>
+                            <tr key={selectedCustomer.pass_no}>
+                                <td>{selectedCustomer.pass_no}</td>
+                                <td>{selectedCustomer.country}</td>
+                                <td>{selectedCustomer.address}</td>
+                                <td>{selectedCustomer.email}</td>
+                                <td>{selectedCustomer.customer_name}</td>
+                                <td>{selectedCustomer.cphone}</td>
+                                <td>{selectedCustomer.total_mileage}</td>
+
                             </tr>
-                        )
-                    })}
-                   
                 </tbody>
             </table>
         </div>

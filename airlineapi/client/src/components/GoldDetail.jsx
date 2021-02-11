@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { CustomerContext } from "../context/CustomerContext";
 import '../style/list.css';
 import {Link} from "react-router-dom";
+
 const ListGold = (props) => {
     const {customers, setCustomers}= useContext(CustomerContext)
     useEffect(() => {
@@ -28,6 +29,7 @@ const ListGold = (props) => {
                         <th>Frequently Customer No</th>
                         <th>Customer Passaport No</th>
                         <th>Total Millage</th>
+                        <th>See Detail</th>
                     </tr>
                       
                 </thead>

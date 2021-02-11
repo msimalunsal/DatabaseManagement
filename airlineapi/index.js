@@ -92,8 +92,6 @@ app.get("/api/v1/ffc/customers/:id/" , async (req,res) => {
 });
 
 
-
-
 app.listen(3000, () =>{
     console.log("server is listening on port 3000");
 });

@@ -2,7 +2,8 @@ import React , {useEffect} from "react";
 import CustomerFinder from "../apis/CustomeFinder";
 import { useContext } from 'react';
 import { CustomerContext } from "../context/CustomerContext";
-import '../style/list.css';
+import {Link} from "react-router-dom";
+
 const ListSilver = (props) => {
     const {customers, setCustomers}= useContext(CustomerContext)
     useEffect(() => {
@@ -27,6 +28,7 @@ const ListSilver = (props) => {
                         <th>Frequently Customer No</th>
                         <th>Customer Passaport No</th>
                         <th>Total Millage</th>
+                        <th>See Detail</th>
                     </tr>
                       
                 </thead>
@@ -37,7 +39,7 @@ const ListSilver = (props) => {
                                 <td>{customers.freq_cust_no}</td>
                                 <td>{customers.cust_pass_no}</td>
                                 <td>{customers.total_millage}</td>
-                               
+                                <td><Link to={`customers/${customers.cust_pass_no}`}>GO</Link></td>
                             </tr>
                         )
                     })}

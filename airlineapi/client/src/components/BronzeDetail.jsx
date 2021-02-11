@@ -3,9 +3,12 @@ import CustomerFinder from "../apis/CustomeFinder";
 import { useContext } from 'react';
 import { CustomerContext } from "../context/CustomerContext";
 import '../style/list.css';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+
+
 const ListBronze = (props) => {
-    const {customers, setCustomers}= useContext(CustomerContext)
+    const {customers, setCustomers}= useContext(CustomerContext);
+
     useEffect(() => {
         const fetchData = async() =>{
             try {
@@ -35,7 +38,7 @@ const ListBronze = (props) => {
                 <tbody>
                     {customers && customers.map(customers => {
                         return(
-                            <tr key={customers.freq_cust_no}>
+                            <tr  key={customers.freq_cust_no}>
                                 <td>{customers.freq_cust_no}</td>
                                 <td>{customers.cust_pass_no}</td>
                                 <td>{customers.total_millage}</td>
